@@ -1,0 +1,2 @@
+requests_futures==1.0.0
+datarobot-mlops[kafka]
