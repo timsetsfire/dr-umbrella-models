@@ -1,8 +1,6 @@
 # Umbrella
 
-## Files for Approach 1
-
-* `create_deployments.ipynb` - this notebook can be used to create each quantile regression pipeline.  Once the pipeline was created, it is saved to disk, registered and then deployed to DataRobot.  Also, this notebook will deploy the umbrella model which will be used as the entry point to each seperate quantile regression deployed to DR.
+## Files
 
 * `runner.ipynb` - simple notebook that mocks the get date, preprocess data, score data, write predictions type of pipeline.  This type of flow is what would be scheduled in DataRobot.  
 
@@ -20,7 +18,9 @@ See the main umbrella model in `./models/master-model`
 
 ### Recommended if ...
 
-You might need to only retrain a single model.  
+* You might need to only retrain a single model.
+* you require prediction tracking for all submodels
+* you require feature drift monitoring
 
 ### Benefit to approach 1
 
@@ -28,19 +28,21 @@ Allows replacement of any model, without disrupting other models.
 
 ## Approach 2
 
-Similar to the first, but instead of the unstructured model being used to call 19 other deployments, all of the model artifacts are included in this model and scoring happens entirely within the unstructured models (no calls to other datarobot deployments).  This approach will still provide feature drift monitoring, target drift monitoring, and capture predictions overtime.  
-
-
+Similar to the first, but instead of the unstructured model being used to call 19 other deployments, all of the model artifacts are included in this model and scoring happens entirely within the unstructured models (no calls to other datarobot deployments for predictions).  All submodels have a spot in the deployment console, but only for the purposes of monitoring.  This approach will still provide feature drift monitoring, target drift monitoring, and capture predictions overtime.  
 
 ### Recommended if ...
 
-... you will retrain all sub models at a given go.  
+* you will retrain all sub models at a given go.  
+* you require prediction tracking for all submodels
+* you require feature drift monitoring
 
 ### Benefit to approach 2
 
 This will probably be quite a bit faster than approach 1 as network calls are not being made to the 19 sub models deployed as datarobot endpoints.  
 
 Less deployments sitting in AKS.  Previous approach would require 20 AKS Deployments, 1 for the master and 19 for the sub models.  This would require 1.  
+
+
 
 
 
