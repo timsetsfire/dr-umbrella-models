@@ -1,0 +1,36 @@
+prediction_dataset:
+  categories:
+  - PREDICTION
+  - TRAINING
+  created_at: 2025-03-17 14:07:56.255000+00:00
+  created_by: Timothy Whittaker
+  data_persisted: true
+  id: 67d82cbc37b498243d0feaca
+  is_data_engine_eligible: true
+  is_latest_version: true
+  is_snapshot: true
+  name: INSURANCE_PREDICTIONS
+  processing_state: COMPLETED
+  recipe_id: null
+  row_count: 1204
+  sample_size: null
+  size: 465801
+  version_id: 67d82cbc37b498243d0feacb
+scoring_dataset:
+  categories:
+  - PREDICTION
+  - TRAINING
+  created_at: 2025-03-17 13:17:23.154000+00:00
+  created_by: Timothy Whittaker
+  data_persisted: true
+  id: 67d820e346a8be92b68253a7
+  is_data_engine_eligible: true
+  is_latest_version: true
+  is_snapshot: false
+  name: Insurace Scoring Data
+  processing_state: COMPLETED
+  recipe_id: null
+  row_count: 1204
+  sample_size: null
+  size: 72609
+  version_id: 67d820e346a8be92b68253a8
